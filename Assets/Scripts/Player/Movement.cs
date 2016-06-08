@@ -15,9 +15,7 @@ public class Movement : MonoBehaviour {
 	public float jumpPower;
 	public float jumpRayD;
 	public Rigidbody playerP;
-	
-	public Transform pF;
-	public float pFH;
+
 	
 	void Start () {
 		lockS = true;
@@ -44,8 +42,6 @@ public class Movement : MonoBehaviour {
 	void Moving () {
 		Vector3 mvr = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 		player.Translate(mvr * speed * Time.deltaTime);
-		Vector3 pFPos = new Vector3(player.position.x,pFH,player.position.z);
-		pF.position = pFPos;
 		if(mvr == Vector3.zero){
 			anim.SetBool("Running",false);
 		}

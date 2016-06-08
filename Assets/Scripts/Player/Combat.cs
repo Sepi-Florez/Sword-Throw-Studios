@@ -4,7 +4,7 @@ using System.Collections;
 public class Combat : MonoBehaviour {
 	public Transform player;
 	public Animator anim;
-	public float aRL;
+	public float attRange;
 	
 	public int weaponDamage;
 	RaycastHit attacked;
@@ -28,7 +28,7 @@ public class Combat : MonoBehaviour {
 	void Attack () {
 		if(Input.GetButtonDown("Fire1")){
 			anim.SetTrigger("struck");
-			if(Physics.Raycast(player.position,aR,out attacked,aRL)){
+			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
 				switch(attacked.transform.tag){
 					case "Breakable":
 						attacked.transform.GetComponent<Urn>().Break();
@@ -49,7 +49,7 @@ public class Combat : MonoBehaviour {
 		}
 	}
 	void Interaction () {
-		if(Physics.Raycast(player.position,aR,out inFront,aRL)){
+		if(Physics.Raycast(player.position,aR,out inFront,attRange)){
 		}
 	}
 	public void Struck (float damage) {
