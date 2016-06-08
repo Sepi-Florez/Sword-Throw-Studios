@@ -1,0 +1,31 @@
+1. Voorstellen groep
+
+2. Uitleggen Concept
+
+3. Uitleggen Artstyle - ( Cartoony uitstraling met PBR ) 
+
+4. Uitleggen map ( top down view van de areas )
+
+5. Asset List + Code + Tijd Inschatting
+
+6. Trello laten zien
+
+7. Taak Verdeling ( David : Code, Brian : Enviroment, Rick : 3D Moddeling, Ramon : 3D Moddeling )
+
+
+12 Mei - Presentatie 
+
+
+1. David Introduceerd de presentatie 
+2. Iedereen stelt zich voor
+3. David praat over het verhaal en hoe de gameplay is 
+4. Rick praat over de hub, hoe je naar de levels gaat en hoe het zit met de shop en de currency ( vergeet de trinkets niet die je kan halen )
+5. Rick sluit "Het Idee" af
+6. Brian heeft het over de artstyle
+7. Brian gaat het hebben over de levels en hoe je de sleutels krijgt ( en waarvoor ze dienen )
+8. Ramon laat de npc's zien ( en wat hun nut is ) 
+9.  Ramon laat de Ui zien
+10. Brian laat de planning
+11. David laat trello zien
+12. Vragen?
+13. Eind
