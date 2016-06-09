@@ -12,7 +12,6 @@ public class Urn : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GetObjects();
-		Break();
 	}
 	
 	// Update is called once per frame
