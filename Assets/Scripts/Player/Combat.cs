@@ -29,6 +29,7 @@ public class Combat : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1")){
 			anim.SetTrigger("struck");
 			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
+				print("boobies");
 				switch(attacked.transform.tag){
 					case "Breakable":
 						attacked.transform.GetComponent<Urn>().Break();
