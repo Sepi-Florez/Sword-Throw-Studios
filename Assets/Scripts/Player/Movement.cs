@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Movement : MonoBehaviour {
+	public Transform playerObj;
 	public Transform player;
 	public Animator anim;
 	
@@ -41,7 +42,7 @@ public class Movement : MonoBehaviour {
 	}
 	void Moving () {
 		Vector3 mvr = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
-		player.Translate(mvr * speed * Time.deltaTime);
+		playerObj.Translate(mvr * speed * Time.deltaTime);
 		if(mvr == Vector3.zero){
 			anim.SetBool("Running",false);
 		}
@@ -52,10 +53,10 @@ public class Movement : MonoBehaviour {
 	void Jumping () {
 		Vector3 jvr = transform.TransformDirection(-Vector3.up * 10);
 		if(Input.GetButtonDown("Jump")){
-			print("HarryProbeert");
+			print("Jump try");
 			if(Physics.Raycast(player.position,jvr,jumpRayD)){
-				GetComponent<Rigidbody>().AddForce(transform.up*jumpPower);
-				print(playerP);
+				playerP.AddForce(transform.up*jumpPower);
+				print("Jump Accomplished");
 			}
 		}
 	}
