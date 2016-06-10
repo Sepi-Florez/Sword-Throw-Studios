@@ -16,15 +16,26 @@ public class Movement : MonoBehaviour {
 	public float jumpPower;
 	public float jumpRayD;
 	public Rigidbody playerP;
+	
+	public bool camMove = true;
+	public bool move = true;
+	public bool jump = true;
 
 	
 	void Start () {
 		lockS = true;
 	}
 	void Update () {
-		CameraMoving();
-		Moving();
-		Jumping();
+		if(camMove == true){
+			CameraMoving();
+		}
+		if(move == true){
+			Moving();
+		}
+		if(jump == true){
+			Jumping();
+		}
+		
 	}
 	void CameraMoving () {
 		Vector3 vRot = new Vector3(Input.GetAxis("Mouse Y"),0,0);
