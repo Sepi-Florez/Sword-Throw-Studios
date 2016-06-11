@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour {
 	public bool move = true;
 	public bool jump = true;
 
+	public Vector3 fallRespawn;
+
 	
 	void Start () {
 		lockS = true;

@@ -4,7 +4,7 @@ using System.Collections;
 public class Teleporter : MonoBehaviour {
 	public Vector3 placementFix;
 	public Transform destination;
-	public GameObject particleFX;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +15,6 @@ public class Teleporter : MonoBehaviour {
 	}
 	void OnTriggerStay (Collider onTele) {
 		onTele.transform.parent.GetComponent<Movement>().jump = false;
-		Instantiate(particleFX,transform.position,Quaternion.identity);
 		if(Input.GetButtonDown("Jump")){
 			onTele.transform.parent.transform.position = destination.position;
 			onTele.transform.parent.transform.position += placementFix;
@@ -23,5 +22,6 @@ public class Teleporter : MonoBehaviour {
 	}
 	void OnTriggerExit (Collider offTele) {
 		offTele.transform.parent.GetComponent<Movement>().jump = true;
+		offTele.transform.parent.transform.GetComponent<Movement>().fallRespawn = transform.position;
 	}
 }

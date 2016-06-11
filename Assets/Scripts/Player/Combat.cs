@@ -8,7 +8,6 @@ public class Combat : MonoBehaviour {
 	
 	public int weaponDamage;
 	RaycastHit attacked;
-	RaycastHit inFront; 
 	Vector3 aR;
 	Vector3 knockback;
 	public float wKnockbackPower;
@@ -46,10 +45,6 @@ public class Combat : MonoBehaviour {
 			}
 		}
 		if(Input.GetButton("Fire2")){
-		}
-	}
-	void Interaction () {
-		if(Physics.Raycast(player.position,aR,out inFront,attRange)){
 		}
 	}
 	public void Struck (float damage) {
