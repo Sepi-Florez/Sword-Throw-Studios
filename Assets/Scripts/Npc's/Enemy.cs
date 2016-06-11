@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour {
 	public float timer;
 	
 	RaycastHit attacked;
-	public float attackD;
-	public float attackR;
+	public float attackRng;
+	public float attackRate;
 	public float damage;
 	public float knockbackHeight;
 	public float knockbackPower;
@@ -31,10 +31,10 @@ public class Enemy : MonoBehaviour {
 		Attack();
 	}
 	void Attack () {
-		if(Physics.Raycast(transform.position,transform.forward,out attacked,attackD)){
+		if(Physics.Raycast(transform.position,transform.forward,out attacked,attackRng)){
 			chase = false;
 			timer += Time.deltaTime;
-			if(timer >= attackR){
+			if(timer >= attackRate){
 				Vector3 knockback = transform.forward;
 				knockback.y += knockbackHeight;
 				attacked.transform.GetComponent<Combat>().Struck(damage);
