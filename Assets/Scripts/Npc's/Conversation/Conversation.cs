@@ -3,17 +3,26 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Conversation : MonoBehaviour {
+	public Canvas canvas;
 
-	// Use this for initialization
+	public GameObject convIns;
+	public GameObject convObj;
+	public Vector3 convPos;
+
+	public Text NpcResponse;
+	public Text[] Options;
+
 	void Start () {
-	
+		convObj.SetActive(false);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 	}
 	public void EngageConversation(){
-		print("Conversation Activated");
+		convObj = Instantiate(convIns,convPos,Quaternion.identity)GameObject;
+	}
+	public void Response (int option){
+
 	}
 }

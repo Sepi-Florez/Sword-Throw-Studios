@@ -18,6 +18,7 @@ public class Teleporter : MonoBehaviour {
 		if(Input.GetButtonDown("Jump")){
 			onTele.transform.parent.transform.position = destination.position;
 			onTele.transform.parent.transform.position += placementFix;
+			print("teleported");
 		}
 	}
 	void OnTriggerExit (Collider offTele) {

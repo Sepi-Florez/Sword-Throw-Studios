@@ -15,11 +15,11 @@ public class Fluxs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		hover();
+		Hover();
 		Focus(newFocus);
 		
 	}
-	void hover(){
+	void Hover(){
 		transform.position = flux;
 		flux.y += amplitude * Mathf.Sin(speed * Time.time);
 	}
