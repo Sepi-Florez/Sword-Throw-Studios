@@ -17,3 +17,5 @@ public class Teleporter : MonoBehaviour {
 		teleported.position += placementFix;
 	}
 }
+
+
