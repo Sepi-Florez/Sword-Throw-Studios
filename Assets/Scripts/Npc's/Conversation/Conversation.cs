@@ -20,7 +20,7 @@ public class Conversation : MonoBehaviour {
 	
 	}
 	public void EngageConversation(){
-		convObj = Instantiate(convIns,convPos,Quaternion.identity)GameObject;
+		//convObj = Instantiate(convIns,convPos,Quaternion.identity)GameObject;
 	}
 	public void Response (int option){
 
