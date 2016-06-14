@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour {
 			print("deleted listener");
 		}
 		else{
-			//invSlots[but].onClick.AddListener(() => Move1(item));
+			invSlots[but].onClick.AddListener(() => Move1(item));
 			item.position = invSlots[but].transform.position;
 			print("new listener");
 		}

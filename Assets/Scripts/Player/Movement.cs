@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour {
 	public bool jump = true;
 
 	public Vector3 fallRespawn;
+	public Transform teleporter;
 
 	
 	void Start () {
@@ -66,11 +67,14 @@ public class Movement : MonoBehaviour {
 	void Jumping () {
 		Vector3 jvr = transform.TransformDirection(-Vector3.up * 10);
 		if(Input.GetButtonDown("Jump")){
-			print("Jump try");
-			if(Physics.Raycast(player.position,jvr,jumpRayD)){
-				playerP.AddForce(transform.up*jumpPower);
-				print("Jump Accomplished");
-			}
+			if(teleporter != null) {
+				teleporter.transform.GetComponent<Teleporter>().Teleport(playerObj);			}
+			else{
+				if(Physics.Raycast(player.position,jvr,jumpRayD)){
+					playerP.AddForce(transform.up*jumpPower);
+					print("Jump Accomplished");
+				}
+			}		
 		}
 	}
 }

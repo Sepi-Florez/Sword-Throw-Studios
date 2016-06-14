@@ -7,6 +7,7 @@ public class Interactions : MonoBehaviour {
 
 	public bool input = true;
 	public bool interact = true;
+	public bool conversation = true;
 
 	public RaycastHit inFront;
 	public float interactRng;
@@ -32,7 +33,10 @@ public class Interactions : MonoBehaviour {
 		}
 		if(interact == true){
 			if(Input.GetButtonDown("Interact")){
-				inFront.transform.GetComponent<Conversation>().EngageConversation();
+				if(conversation = false){
+					inFront.transform.GetComponent<Conversation>().EngageConversation();
+					conversation = true;
+				}
 			}
 		}
 	}
