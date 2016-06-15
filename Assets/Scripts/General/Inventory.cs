@@ -27,7 +27,6 @@ public class Inventory : MonoBehaviour {
 	public void Move1 (Transform imag){
 		if(follow == false){
 			item[0] = imag;
-			//invSlots[0].onClick.RemoveListener(() => Move1(item));
 			follow = true;
 			print("Grabed Item");		
 			
@@ -35,7 +34,7 @@ public class Inventory : MonoBehaviour {
 	}
 	public void Move2 (int but){
 		if(follow == false){
-			invSlots[but].onClick.RemoveListener(() => Move1(item[1]));
+			invSlots[but].onClick.AddListener(() => Move1(null));
 			print("deleted listener");
 		}
 		else{
