@@ -23,7 +23,6 @@ public class Conversation : MonoBehaviour {
 		convObj = (GameObject)Instantiate(convIns,convPos,Quaternion.identity);
 		convObj.transform.SetParent(canvas.transform);
 		convObj.transform.GetComponent<RectTransform>().anchoredPosition = convPos;
-		//convObj = Instantiate(convIns,convPos,Quaternion.identity)GameObject;
 	}
 	public void Response (int option){
 

@@ -33,7 +33,7 @@ public class Interactions : MonoBehaviour {
 		}
 		if(interact == true){
 			if(Input.GetButtonDown("Interact")){
-				if(conversation = false){
+				if(conversation == false){
 					inFront.transform.GetComponent<Conversation>().EngageConversation();
 					conversation = true;
 				}
