@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour {
 	public List<Button> invSlots = new List<Button>();
 	public List<Transform> items = new List<Transform>();
 	public Transform heldItem;
+	public Transform heldItemObj;
 	public int slotNumber;
 	
 	public GameObject invObj;
@@ -33,6 +34,7 @@ public class Inventory : MonoBehaviour {
 		print("move1 activated");
 		if(follow == false){
 			heldItem = imag;
+			heldItem.SetParent(heldItemObj);
 			follow = true;
 			print("Grabed Items");		
 			

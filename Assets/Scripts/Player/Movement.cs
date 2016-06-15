@@ -68,7 +68,7 @@ public class Movement : MonoBehaviour {
 		Vector3 jvr = transform.TransformDirection(-Vector3.up * 10);
 		if(Input.GetButtonDown("Jump")){
 			if(teleporter != null) {
-				teleporter.transform.GetComponent<Teleporter>().Teleport(playerObj);			}
+				teleporter.transform.GetComponent<Teleporter>().Teleport(playerObj );			}
 			else{
 				if(Physics.Raycast(player.position,jvr,jumpRayD)){
 					playerP.AddForce(transform.up*jumpPower);
