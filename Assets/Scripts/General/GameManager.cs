@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 	public Transform player;
+	public GameObject canvas;
+
 	public Vector3 offset;
 	public float respawnHeight;
 	// Use this for initialization
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour {
 	}
 	public void transport (Vector3 destination) {
 		DontDestroyOnLoad(player.gameObject);
+		DontDestroyOnLoad(canvas);
 		player.position = destination;
+
 	}
 }
