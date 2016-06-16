@@ -41,15 +41,18 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	public void Move2 (int but){
+		print("move2 activated");
 		slotNumber = but;
 		if(follow == false){
 			invSlots[but].onClick.RemoveAllListeners();
+			//items.RemoveAt(but);
 			print("deleted listener");
 		}
 		else{
 			invSlots[but].onClick.AddListener(() => Move1(heldItem));
 			heldItem.position = invSlots[but].transform.position;
 			heldItem.SetParent(invSlots[but].transform);
+			items.Insert(but, heldItem); 
 			print("new listener");
 			follow = false;
 			print("putdown Items");
