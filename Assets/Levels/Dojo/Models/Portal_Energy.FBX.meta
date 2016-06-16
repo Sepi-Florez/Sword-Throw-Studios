@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d86b80391041dfc46bdef6e14d19c0c3
-timeCreated: 1463510724
+guid: 33b75327506e5134182b439f8310600e
+timeCreated: 1466078488
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 3D_Bldg_Iglo
+    4300000: Portal_Energy
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -68,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
