@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 	public float respawnHeight;
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad(transform.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -17,5 +18,9 @@ public class GameManager : MonoBehaviour {
 		if(player.position.y <= respawnHeight ){
 			player.position = player.transform.GetComponent<Movement>().fallRespawn + offset;
 		}
+	}
+	public void transport (Vector3 destination) {
+		DontDestroyOnLoad(player.gameObject);
+		player.position = destination;
 	}
 }

@@ -46,6 +46,11 @@ public class Interactions : MonoBehaviour {
 				interactTxtObj.SetActive(true);
 				interact = true;
 			}
+			else{
+				interactTxtObj.SetActive(false);
+				interact = false;
+			}
+
 		}
 		else{
 			interactTxtObj.SetActive(false);

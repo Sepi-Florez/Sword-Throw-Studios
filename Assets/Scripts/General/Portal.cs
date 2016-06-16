@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Portal : MonoBehaviour {
 	public string destination;
+	public Vector3 destinationCord;
+
+	public GameObject gameManager;
 	// Use this for initialization
 	void Start () {
 	
@@ -12,9 +15,11 @@ public class Portal : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnCollisionEnter(Collision entered){
-		if(entered.transform.tag == "Player" ){
+	void OnTriggerEnter(Collider entered){
+		if(entered.transform.tag == "Player" ){ 
+			gameManager.transform.GetComponent<GameManager>().transport(destinationCord);
 			Application.LoadLevel(destination);
+
 		}
 	}
 }
