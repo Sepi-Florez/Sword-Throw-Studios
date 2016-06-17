@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour {
 		for(int a = 0; a < invObj.transform.GetChild(0).childCount; a++){
 			invSlots.Add(invObj.transform.GetChild(0).GetChild(a).GetComponent<Button>());
 			if(invSlots[a].transform.childCount != 0){
-				items.Add (invSlots[a].transform.GetChild(0).transform);
+				items.Add(invSlots[a].transform.GetChild(0).transform);
 			}
 		}
 		invSlots[0].onClick.AddListener(() => Move1(items[slotNumber]));
@@ -45,14 +45,14 @@ public class Inventory : MonoBehaviour {
 		slotNumber = but;
 		if(follow == false){
 			invSlots[but].onClick.RemoveAllListeners();
-			//items.RemoveAt(but);
+			
 			print("deleted listener");
 		}
 		else{
 			invSlots[but].onClick.AddListener(() => Move1(heldItem));
 			heldItem.position = invSlots[but].transform.position;
 			heldItem.SetParent(invSlots[but].transform);
-			items.Insert(but, heldItem); 
+			items.Add(heldItem); 
 			print("new listener");
 			follow = false;
 			print("putdown Items");
