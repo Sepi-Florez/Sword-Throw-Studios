@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour {
 	
 	void Start () {
 		lockS = true;
+		Mouse();
 	}
 	void Update () {
 		if(camMove == true){
@@ -38,21 +39,13 @@ public class Movement : MonoBehaviour {
 		if(jump == true){
 			Jumping();
 		}
-		
 	}
 	void CameraMoving () {
 		Vector3 vRot = new Vector3(Input.GetAxis("Mouse Y"),0,0);
 		Vector3 hRot = new Vector3(0,Input.GetAxis("Mouse X"),0);
 		vObj.transform.Rotate(vRot * sensitivity * Time.deltaTime ) ;
 		hObj.transform.Rotate(hRot * sensitivity * Time.deltaTime ) ;
-		if(lockS == true){
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
-		}
-		else{
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
-		}
+
 	}
 	void Moving () {
 		Vector3 mvr = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
@@ -75,6 +68,23 @@ public class Movement : MonoBehaviour {
 					print("Jump Accomplished");
 				}
 			}		
+		}
+	}
+	public void ToggleMovement () {
+		camMove = !camMove;
+		jump = !jump;
+		move = !move;
+		lockS = !lockS;
+		Mouse();
+	}
+	public void Mouse () {
+		if(lockS == true){
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+		else{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }

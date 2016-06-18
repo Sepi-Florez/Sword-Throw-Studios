@@ -13,7 +13,6 @@ public class Conversation : MonoBehaviour {
 	public Text[] Options;
 
 	void Start () {
-		convObj.SetActive(false);
 	}
 
 	void Update () {
