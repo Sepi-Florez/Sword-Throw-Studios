@@ -41,33 +41,33 @@ public class Interactions : MonoBehaviour {
 			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1"  ){
 				interactTxtObj.SetActive(true);
 				switch(inFront.transform.tag){
-				case "Npc":
-					interactTxtObj.GetComponent<Text>().text = interactString[0];
-					if(Input.GetButtonDown("Interact")){
-						inFront.transform.GetComponent<Conversation>().EngageConversation();
-						conversation = true;
-					}
+					case "Npc":
+						interactTxtObj.GetComponent<Text>().text = interactString[0];
+						if(Input.GetButtonDown("Interact")){
+							inFront.transform.GetComponent<Conversation>().EngageConversation();
+							conversation = true;
+						}
 					break;
-				case "Key" :
-					interactTxtObj.GetComponent<Text>().text = interactString[1];
-					if(Input.GetButtonDown("Interact")){
-						transform.GetComponent<Inventory>().keysCount +=1;
-						transform.GetComponent<Inventory>().Keys();
-					}
+					case "Key" :
+						interactTxtObj.GetComponent<Text>().text = interactString[1];
+						if(Input.GetButtonDown("Interact")){
+							transform.GetComponent<Inventory>().keysCount +=1;
+							transform.GetComponent<Inventory>().Keys();
+						}
 					break;
-				case "Item0" :
-					interactTxtObj.GetComponent<Text>().text = interactString[1];
-					if(Input.GetButtonDown("Interact")){
-						Destroy(inFront.transform.gameObject);
-						transform.GetComponent<Inventory>().addItem(0);
-					}
+					case "Item0" :
+						interactTxtObj.GetComponent<Text>().text = interactString[1];
+						if(Input.GetButtonDown("Interact")){
+							Destroy(inFront.transform.gameObject);
+							transform.GetComponent<Inventory>().addItem(0);
+						}
 					break;
-				case "Item1" :
-					interactTxtObj.GetComponent<Text>().text = interactString[1];
-					if(Input.GetButtonDown("Interact")){
-						Destroy(inFront.transform.gameObject);
-						transform.GetComponent<Inventory>().addItem(1);
-					}
+					case "Item1" :
+						interactTxtObj.GetComponent<Text>().text = interactString[1];
+						if(Input.GetButtonDown("Interact")){
+							Destroy(inFront.transform.gameObject);
+							transform.GetComponent<Inventory>().addItem(1);
+						}
 					break;
 				}
 			}

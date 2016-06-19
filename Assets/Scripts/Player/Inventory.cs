@@ -21,6 +21,8 @@ public class Inventory : MonoBehaviour {
 	public Transform[] keysImag;
 
 	public GameObject[] itemObjs;
+	public Transform[] equipObjs;
+	public Transform currEquip;
 	void Start () {
 		invObj.SetActive(false);
 		for(int a = 0; a < invObj.transform.GetChild(0).childCount; a++){
@@ -36,7 +38,8 @@ public class Inventory : MonoBehaviour {
 		for(int b = 0; b < keys.Length; b++){
 			keysImag[b].gameObject.SetActive(false);
 		}
-
+		equipObjs[0].gameObject.SetActive(false);
+		equipObjs[1].gameObject.SetActive(false);
 	}
 	void Update () {
 		if(follow == true){
@@ -58,6 +61,7 @@ public class Inventory : MonoBehaviour {
 		invObj.SetActive(!invObj.activeInHierarchy);
 		transform.GetComponent<Movement>().ToggleMovement();
 		transform.GetComponent<Interactions>().Toggle();
+		transform.GetComponent<Combat>().Toggle();
 		Keys();
 		Check();
 	}
@@ -95,6 +99,7 @@ public class Inventory : MonoBehaviour {
 		if(heldItem.transform.tag == "Equipable"){
 			if(follow == false){
 				equipSlot.onClick.RemoveAllListeners();
+				equipSwitch(heldItem);
 				equipedItem = null;
 			}
 			else{
@@ -102,7 +107,7 @@ public class Inventory : MonoBehaviour {
 				heldItem.position = equipSlot.transform.position;
 				heldItem.SetParent(equipSlot.transform);
 				equipedItem = heldItem;
-
+				equipSwitch(heldItem);
 				follow = false;
 			}
 		}
@@ -122,6 +127,26 @@ public class Inventory : MonoBehaviour {
 				insItem.transform.SetParent(invSlots[a].transform);
 				b += 1;
 			}
+		}
+	}
+	public void equipSwitch (Transform weapon) {
+		if(follow == true){
+			switch(weapon.name){
+				case "Item00(Clone)":
+					print("item00");
+					currEquip.gameObject.SetActive(false);
+					currEquip = equipObjs[1];
+					currEquip.gameObject.SetActive(true);
+				break;
+				case "Item01(Clone)": 
+					currEquip.gameObject.SetActive(false);
+					currEquip = equipObjs[0];
+					currEquip.gameObject.SetActive(true);
+				break;
+			}
+		}
+		if(follow == false){
+			currEquip.gameObject.SetActive(false);
 		}
 	}
 }

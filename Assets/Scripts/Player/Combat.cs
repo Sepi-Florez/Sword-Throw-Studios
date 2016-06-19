@@ -6,6 +6,7 @@ public class Combat : MonoBehaviour {
 	public Animator anim;
 	public float attRange;
 	
+	public bool attack;
 	public int weaponDamage;
 	RaycastHit attacked;
 	Vector3 aR;
@@ -21,7 +22,9 @@ public class Combat : MonoBehaviour {
 	}
 	
 	void Update () {
-		Attack();
+		if(attack == false){
+			Attack();
+		}
 		aR = player.TransformDirection(Vector3.forward);
 	}
 	void Attack () {
@@ -56,5 +59,8 @@ public class Combat : MonoBehaviour {
 	}
 	void Death(){
 		print("Death");
+	}
+	public void Toggle(){
+		attack = !attack;
 	}
 }
