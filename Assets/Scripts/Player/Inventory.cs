@@ -23,6 +23,11 @@ public class Inventory : MonoBehaviour {
 	public GameObject[] itemObjs;
 	public Transform[] equipObjs;
 	public Transform currEquip;
+	public Text buff;
+	public float speedBuff;
+	public float jumpBuff;
+
+
 	void Start () {
 		invObj.SetActive(false);
 		for(int a = 0; a < invObj.transform.GetChild(0).childCount; a++){
@@ -38,6 +43,7 @@ public class Inventory : MonoBehaviour {
 		for(int b = 0; b < keys.Length; b++){
 			keysImag[b].gameObject.SetActive(false);
 		}
+		buff = invObj.transform.FindChild("Buffs").GetComponent<Text>();
 		equipObjs[0].gameObject.SetActive(false);
 		equipObjs[1].gameObject.SetActive(false);
 	}
@@ -137,16 +143,29 @@ public class Inventory : MonoBehaviour {
 					currEquip.gameObject.SetActive(false);
 					currEquip = equipObjs[1];
 					currEquip.gameObject.SetActive(true);
+					transform.GetComponent<Movement>().speed += speedBuff;
+					buff.text = "Movement Speed + " + speedBuff;
 				break;
 				case "Item01(Clone)": 
 					currEquip.gameObject.SetActive(false);
 					currEquip = equipObjs[0];
 					currEquip.gameObject.SetActive(true);
+					transform.GetComponent<Movement>().jumpPower += jumpBuff;
+					buff.text = "Jump Speed + " + speedBuff;
 				break;
 			}
 		}
 		if(follow == false){
 			currEquip.gameObject.SetActive(false);
+			buff.text = null;
+			switch(weapon.name){
+				case "Item00(Clone)":
+					transform.GetComponent<Movement>().speed -= speedBuff;
+				break;
+				case "Item01(Clone)":
+					transform.GetComponent<Movement>().jumpPower -= jumpBuff;
+				break;
+			}
 		}
 	}
 }
