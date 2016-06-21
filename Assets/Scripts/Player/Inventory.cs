@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour {
 	}
 	public void Move2 (int but){
 		slotNumber = but;
-		print("move2" + heldItem);
+		print("move2 " + but);
 		if(follow == false){
 			invSlots[but].onClick.RemoveAllListeners();
 		}

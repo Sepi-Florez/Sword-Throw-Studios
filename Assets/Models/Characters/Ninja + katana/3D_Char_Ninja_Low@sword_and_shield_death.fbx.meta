@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: a342e243146a62d44a06ed76da0c1629
-timeCreated: 1466421507
-=======
-guid: 76d2daa606ae0bd489da8cf6673a9ca0
-timeCreated: 1466496798
->>>>>>> origin/master
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -166,7 +159,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

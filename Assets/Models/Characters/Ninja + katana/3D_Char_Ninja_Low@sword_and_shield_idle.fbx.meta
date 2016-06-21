@@ -1,22 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: c18ebe7594a93924694aab1d92dcdee8
-timeCreated: 1466421507
-=======
-guid: 1900453597262ee4d963c69e4fcc2fa0
-timeCreated: 1466496798
->>>>>>> origin/master
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-<<<<<<< HEAD
     7400000: Take 001
-=======
-    7400000: sword_and_shield_idle
->>>>>>> origin/master
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -38,45 +27,11 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-<<<<<<< HEAD
     clipAnimations: []
-=======
-    clipAnimations:
-    - serializedVersion: 16
-      name: sword_and_shield_idle
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 76
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
->>>>>>> origin/master
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
