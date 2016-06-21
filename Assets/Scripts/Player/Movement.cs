@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour {
 	}
 	void CameraMoving () {
 		horizontalRotation -= -Input.GetAxis ("Mouse X") * mouseSensitivity;
-		hObj.transform.localRotation = Quaternion.Euler (verticalRotation, 0, 0 );
+		hObj.transform.localRotation = Quaternion.Euler (0, horizontalRotation, 0 );
 
         verticalRotation -= -Input.GetAxis ("Mouse Y") * mouseSensitivity;
      	verticalRotation = Mathf.Clamp (verticalRotation, -updownRange, updownRange);

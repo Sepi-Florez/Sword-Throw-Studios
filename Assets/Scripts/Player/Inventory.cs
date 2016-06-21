@@ -131,6 +131,7 @@ public class Inventory : MonoBehaviour {
 		for(int a = 0; b < 1; a++){
 			if(items[a] == null){
 				insItem.transform.SetParent(invSlots[a].transform);
+				insItem.transform.localScale = new Vector3(1, 1, 1);
 				b += 1;
 			}
 		}
