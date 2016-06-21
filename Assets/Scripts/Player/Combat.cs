@@ -15,7 +15,7 @@ public class Combat : MonoBehaviour {
 	public float wKnockbackPower;
 	public float wKnockbackHeight;
 	
-	public Image bubble;
+	public Image hpBubble;
 	public float hp;
 	public float maxHp = 50F;
 	
@@ -56,7 +56,7 @@ public class Combat : MonoBehaviour {
 	public void Struck (float damage) {
 		hp -= damage;
 		float calcHealth = hp / maxHp;
-		bubble.fillAmount = calcHealth;
+		hpBubble.fillAmount = calcHealth;
 		print(damage + " done to player");
 		if(hp <= 0){
 			Death();
