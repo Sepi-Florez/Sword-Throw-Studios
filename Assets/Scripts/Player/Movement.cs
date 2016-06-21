@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour {
 	public Vector3 fallRespawn;
 	public Transform teleporter;
 
+	public float updownRange = 90.0f;
+ 	float verticalRotation = 0;
+ 	float horizontalRotation = 0;
+	public float mouseSensitivity = 4.0f;
+
 	
 	void Start () {
 		lockS = true;
@@ -41,10 +46,12 @@ public class Movement : MonoBehaviour {
 		}
 	}
 	void CameraMoving () {
-		Vector3 vRot = new Vector3(Input.GetAxis("Mouse Y"),0,0);
-		Vector3 hRot = new Vector3(0,Input.GetAxis("Mouse X"),0);
-		vObj.transform.Rotate(vRot * sensitivity * Time.deltaTime ) ;
-		hObj.transform.Rotate(hRot * sensitivity * Time.deltaTime ) ;
+		horizontalRotation -= -Input.GetAxis ("Mouse X") * mouseSensitivity;
+		hObj.transform.localRotation = Quaternion.Euler (verticalRotation, 0, 0 );
+
+        verticalRotation -= -Input.GetAxis ("Mouse Y") * mouseSensitivity;
+     	verticalRotation = Mathf.Clamp (verticalRotation, -updownRange, updownRange);
+        vObj.transform.localRotation = Quaternion.Euler (verticalRotation, 0, 0);
 
 	}
 	void Moving () {
