@@ -31,7 +31,6 @@ public class Combat : MonoBehaviour {
 	}
 	void Attack () {
 		if(Input.GetButtonDown("Fire1")){
-			Struck(10);
 			anim.SetTrigger("struck");
 			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
 				switch(attacked.transform.tag){
