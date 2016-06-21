@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Combat : MonoBehaviour {
 	public Transform player;
@@ -14,6 +15,7 @@ public class Combat : MonoBehaviour {
 	public float wKnockbackPower;
 	public float wKnockbackHeight;
 	
+	public Image bubble;
 	public float hp;
 	public float maxHp = 50F;
 	
@@ -29,6 +31,7 @@ public class Combat : MonoBehaviour {
 	}
 	void Attack () {
 		if(Input.GetButtonDown("Fire1")){
+			Struck(10);
 			anim.SetTrigger("struck");
 			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
 				switch(attacked.transform.tag){
@@ -52,7 +55,9 @@ public class Combat : MonoBehaviour {
 	}
 	public void Struck (float damage) {
 		hp -= damage;
-		print(damage + "2 player");
+		float calcHealth = hp / maxHp;
+		bubble.fillAmount = calcHealth;
+		print(damage + " done to player");
 		if(hp <= 0){
 			Death();
 		}
