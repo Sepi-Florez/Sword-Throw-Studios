@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Combat : MonoBehaviour {
-	public Transform player;
+	GameObject gameManager;
+	Transform player;
 	public Animator anim;
 	public float attRange;
 	
@@ -21,6 +22,8 @@ public class Combat : MonoBehaviour {
 	
 	void Start () {
 		hp = maxHp;
+		gameManager = GameObject.Find("GameManager");
+		player = gameManager.GetComponent<GameManager>().player;
 	}
 	
 	void Update () {

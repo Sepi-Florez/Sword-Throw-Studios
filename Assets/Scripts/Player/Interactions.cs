@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Interactions : MonoBehaviour {
-	public Transform player;
+	GameObject gameManager;
+	Transform player;
+	GameObject canvas;
 
 	public bool input = true;
 	public bool interact = true;
@@ -16,8 +18,9 @@ public class Interactions : MonoBehaviour {
 	public string[] interactString;
 	// Use this for initialization
 	void Start () {
-		
-		
+		gameManager = GameObject.Find("GameManager");
+		player = gameManager.GetComponent<GameManager>().player;
+		canvas = gameManager.GetComponent<GameManager>().canvas;
 	}
 	
 	// Update is called once per frame
