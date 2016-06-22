@@ -90,7 +90,9 @@ public class Inventory : MonoBehaviour {
 			invSlots[but].onClick.RemoveAllListeners();
 		}
 		else{
-			invSlots[but].onClick.AddListener(() => Move1(heldItem));
+			Transform heldItem2 = heldItem;
+			invSlots[but].onClick.AddListener(() => Move1(heldItem2));
+			print(invSlots[but].onClick);
 			heldItem.position = invSlots[but].transform.position;
 			heldItem.SetParent(invSlots[but].transform);
 			items[but] = heldItem; 
