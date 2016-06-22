@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 	public List<Button> invSlots = new List<Button>();
-	public Button equipSlot;
+	Button equipSlot;
 	public Transform[] items;
-	public Transform equipedItem;
-	public Transform heldItem;
+	Transform equipedItem;
+	Transform heldItem;
 	public Transform heldItemObj;
-	public int slotNumber;
+	int slotNumber;
 	
 	public GameObject invObj;
 	
@@ -18,11 +18,11 @@ public class Inventory : MonoBehaviour {
 
 	public bool[] keys;
 	public int keysCount;
-	public Transform[] keysImag;
+	public List<Transform> keysSprite = new List<Transform>();
 
 	public GameObject[] itemObjs;
-	public Transform[] equipObjs;
-	public Transform currEquip;
+	public Transform[] equipables;
+	Transform currEquip;
 	public Text buff;
 	public float speedBuff;
 	public float jumpBuff;
@@ -30,8 +30,9 @@ public class Inventory : MonoBehaviour {
 
 	void Start () {
 		invObj.SetActive(false);
-		for(int a = 0; a < invObj.transform.GetChild(0).childCount; a++){
-			invSlots.Add(invObj.transform.GetChild(0).GetChild(a).GetComponent<Button>());
+		for(int a = 0; a < invObj.transform.FindChild("Button").childCount; a++){
+			invSlots.Add(invObj.transform.FindChild("Button").GetChild(a).GetComponent<Button>());
+			print(invSlots[a]);
 			if(invSlots[a].transform.childCount != 0){
 				items[a] = invSlots[a].transform.GetChild(0).transform;
 				Transform it = items[a];
@@ -41,11 +42,13 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		for(int b = 0; b < keys.Length; b++){
-			keysImag[b].gameObject.SetActive(false);
+			keysSprite.Add(invObj.transform.FindChild("Keys").GetChild(b));
+			keysSprite[b].gameObject.SetActive(false);
 		}
 		buff = invObj.transform.FindChild("Buffs").GetComponent<Text>();
-		equipObjs[0].gameObject.SetActive(false);
-		equipObjs[1].gameObject.SetActive(false);
+		buff.transform.gameObject.SetActive(false);
+		equipables[0].gameObject.SetActive(false);
+		equipables[1].gameObject.SetActive(false);
 	}
 	void Update () {
 		if(follow == true){
@@ -121,7 +124,7 @@ public class Inventory : MonoBehaviour {
 	public void Keys () {
 		for(int a = 0; a < keysCount; a++){
 			keys[a] = true;
-			keysImag[a].gameObject.SetActive(true);
+			keysSprite[a].gameObject.SetActive(true);
 		}
 
 	}
@@ -142,14 +145,14 @@ public class Inventory : MonoBehaviour {
 				case "Item00(Clone)":
 					print("item00");
 					currEquip.gameObject.SetActive(false);
-					currEquip = equipObjs[1];
+					currEquip = equipables[1];
 					currEquip.gameObject.SetActive(true);
 					transform.GetComponent<Movement>().speed += speedBuff;
 					buff.text = "Movement Speed + " + speedBuff;
 				break;
 				case "Item01(Clone)": 
 					currEquip.gameObject.SetActive(false);
-					currEquip = equipObjs[0];
+					currEquip = equipables[0];
 					currEquip.gameObject.SetActive(true);
 					transform.GetComponent<Movement>().jumpPower += jumpBuff;
 					buff.text = "Jump Speed + " + speedBuff;

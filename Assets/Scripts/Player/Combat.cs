@@ -32,6 +32,7 @@ public class Combat : MonoBehaviour {
 	void Attack () {
 		if(Input.GetButtonDown("Fire1")){
 			anim.SetTrigger("struck");
+			//Struck(10);
 			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
 				switch(attacked.transform.tag){
 					case "Breakable":

@@ -7,9 +7,6 @@ public class Currency : MonoBehaviour {
 	public int soulCount;
 	public int soulsObtained;
 
-	public int minValue;
-	public int maxValue;
-
 	public GameObject soulCountUI;
 	public GameObject soulsObtainedUI;
 	Text soulsObtainedText;
@@ -48,7 +45,7 @@ public class Currency : MonoBehaviour {
 	}
 	void InterFace () {
 		soulCountText.text = soulCount.ToString();
-		soulsObtainedText.text = soulsObtained.ToString();
+		soulsObtainedText.text = "+" + soulsObtained.ToString();
 	}
 	void Timer () {
 		if(gathering == true){
