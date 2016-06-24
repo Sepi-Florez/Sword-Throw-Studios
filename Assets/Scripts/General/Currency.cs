@@ -20,11 +20,14 @@ public class Currency : MonoBehaviour {
 	float timer;
 
 	void Start () {
-		soulsObtainedText = soulsObtainedUI.transform.GetComponent<Text>();
-		soulCountText = soulCountUI.transform.GetComponent<Text>();	
 		gameManager = GameObject.Find("GameManager");
 		player = gameManager.GetComponent<GameManager>().player;
 		canvas = gameManager.GetComponent<GameManager>().canvas;
+		soulsObtainedUI = canvas.transform.FindChild("Currency").transform.FindChild("AddedSouls").gameObject;
+		soulCountUI = canvas.transform.FindChild("Currency").transform.FindChild("SoulCount").gameObject;
+		soulsObtainedText = soulsObtainedUI.transform.GetComponent<Text>();
+		soulCountText = soulCountUI.transform.GetComponent<Text>();	
+		soulsObtainedText.text = soulCount.ToString();
 	}
 
 	void Update () {

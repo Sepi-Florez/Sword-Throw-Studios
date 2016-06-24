@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour {
 			keysSprite[b].gameObject.SetActive(false);
 		}
 		buff = inventoryGameObject.transform.FindChild("Buffs").GetComponent<Text>();
-		heldItemObj = inventoryGameObject.transform.FindChild("HeldItem");
+		heldItemObj = inventoryGameObject.transform.FindChild("Held Item");
 		equipSlot = inventoryGameObject.transform.FindChild("EquipSlot").GetComponent<Button>();
 		buff.transform.gameObject.SetActive(false);
 		for(int c = 0; c < equipables.Length; c++){
