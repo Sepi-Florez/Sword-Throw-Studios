@@ -8,7 +8,12 @@ public class Combat : MonoBehaviour {
 	public Animator anim;
 	public float attRange;
 	
+	public bool attWait;
+	public bool attGo;
+	public float attWaitTime;
+
 	public bool attack;
+	public float timer;
 	public int weaponDamage;
 	RaycastHit attacked;
 	Vector3 aR;
@@ -28,15 +33,25 @@ public class Combat : MonoBehaviour {
 	
 	void Update () {
 		if(attack == false){
-			Attack();
+			AttackInput();
 		}
 		aR = player.TransformDirection(Vector3.forward);
+		if(attWait == true){
+			AttackWait();
+		}
+	}
+	void AttackInput () {
+		if(attWait == false){
+			if(Input.GetButtonDown("Fire1")){
+				anim.SetTrigger("struck");
+				attWait = true;
+			}
+		}
 	}
 	void Attack () {
-		if(Input.GetButtonDown("Fire1")){
-			anim.SetTrigger("struck");
-			//Struck(10);
+		if(attGo == true){
 			if(Physics.Raycast(player.position,aR,out attacked,attRange)){
+				print(attacked.transform.name);
 				switch(attacked.transform.tag){
 					case "Breakable":
 						attacked.transform.GetComponent<Urn>().Break();
@@ -52,8 +67,7 @@ public class Combat : MonoBehaviour {
 					break;
 				}
 			}
-		}
-		if(Input.GetButton("Fire2")){
+			attGo = false;
 		}
 	}
 	public void Struck (float damage) {
@@ -70,5 +84,15 @@ public class Combat : MonoBehaviour {
 	}
 	public void Toggle(){
 		attack = !attack;
+	}
+	public void AttackWait(){
+		timer += Time.deltaTime;
+		if(timer >= attWaitTime){
+			attWait = false;
+			attGo = true;
+			timer = 0;
+			Attack();
+
+		}
 	}
 }

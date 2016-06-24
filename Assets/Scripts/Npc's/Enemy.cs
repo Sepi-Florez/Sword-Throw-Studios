@@ -2,15 +2,19 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
+	GameObject gameManager;
+	public Transform player;
+
 	public float hp;
 	public float maxHp = 50F;
 	public float speed = 10F;
 	public bool chase;
 	public RaycastHit ground;
 	
-	public Transform player;
+	public Animator anim;
 	
 	public float timer;
+	public bool death;
 	
 	RaycastHit attacked;
 	public float attackRng;
@@ -19,27 +23,40 @@ public class Enemy : MonoBehaviour {
 	public float knockbackHeight;
 	public float knockbackPower;
 	
-	// Use this for initialization
+	public float LookAtOffset;
+
 	void Start () {
 	hp = maxHp;
+	gameManager = GameObject.Find("GameManager");
+	player = gameManager.GetComponent<GameManager>().player;
+
 	}
-	// Update is called once per frame
+
 	void Update () {
-		if(chase == true){
-			Chase();
+		if(death == false){
+			if(chase == true){
+				Chase();
+			}
+			Attack();
+			anim.SetBool("Chase",chase);
 		}
-		Attack();
 	}
 	void Attack () {
 		if(Physics.Raycast(transform.position,transform.forward,out attacked,attackRng)){
-			chase = false;
-			timer += Time.deltaTime;
-			if(timer >= attackRate){
-				Vector3 knockback = transform.forward;
-				knockback.y += knockbackHeight;
-				attacked.transform.GetComponent<Combat>().Struck(damage);
-				attacked.transform.GetComponent<Rigidbody>().AddForce(knockback * knockbackPower);
-				timer = 0;
+			if(attacked.transform.tag == "Player"){
+				chase = false;
+				timer += Time.deltaTime;
+				if(timer >= attackRate){
+					anim.SetTrigger("Attacking");
+					Vector3 knockback = -player.forward;
+					knockback.y += knockbackHeight;
+					attacked.transform.GetComponent<Combat>().Struck(damage);
+					attacked.transform.GetComponent<Rigidbody>().AddForce(knockback * knockbackPower);
+					timer = 0;
+				}
+			}
+			else{
+				chase = true;
 			}
 		}
 		else{
@@ -47,6 +64,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 	public void Struck (int damage) {
+		anim.SetTrigger("Struck");
 		hp -= damage;
 		print(damage);
 		if(hp <= 0){
@@ -54,10 +72,12 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 	public void Death (){
-		Destroy(gameObject);
+		death = true;
+		anim.SetTrigger("Death");
 	}
 	public void Chase () {
-		transform.LookAt(player);
+		Vector3 playerVect = new Vector3(player.position.x,LookAtOffset,player.position.z);
+		transform.LookAt(playerVect);
 		Vector3 cha = new Vector3(0,0,1);
 		transform.Translate(cha * speed * Time.deltaTime);
 	}

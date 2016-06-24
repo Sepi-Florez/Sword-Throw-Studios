@@ -12,8 +12,8 @@ public class Conversation : MonoBehaviour {
 	public GameObject convObj;
 	public Vector3 convPos;
 
-	bool exiting;
-	float timer;
+	public bool exiting;
+	public float timer;
 	public float exitTime;
 
 	public Text npcResponse;
@@ -52,6 +52,7 @@ public class Conversation : MonoBehaviour {
 			timer += Time.deltaTime;
 			if(timer >= exitTime){
 				ExitConversation();
+				timer = 0;
 			}
 		}
 	}
@@ -80,18 +81,20 @@ public class Conversation : MonoBehaviour {
 	}
 	public void ExitConversation(){
 		npcResponse.text = npcResponseExit;
-		for(int a = 0; a < options.Length; a++){
-			options[a].transform.gameObject.SetActive(false);
-		}
 		if(exiting == true){
+			exiting = false;
 			player.transform.GetComponent<Movement>().ToggleMovement();
 			player.transform.GetComponent<Interactions>().Toggle();
 			player.transform.GetComponent<Combat>().Toggle();
 			canvas.transform.FindChild("TopLeft").gameObject.SetActive(true);
-			exiting = false;
 			Destroy(convObj);
 		}
-		exiting = true;
+		else{
+			for(int a = 0; a < options.Length; a++){
+				options[a].transform.gameObject.SetActive(false);
+			}
+			exiting = true;
+		}
 
 	}
 	public void Response (int option){
