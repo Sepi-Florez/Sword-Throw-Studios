@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Currency : MonoBehaviour {
+	GameObject gameManager;
+	GameObject canvas;
+	Transform player;
 
 	public int soulCount;
 	public int soulsObtained;
@@ -18,7 +21,10 @@ public class Currency : MonoBehaviour {
 
 	void Start () {
 		soulsObtainedText = soulsObtainedUI.transform.GetComponent<Text>();
-		soulCountText = soulCountUI.transform.GetComponent<Text>();
+		soulCountText = soulCountUI.transform.GetComponent<Text>();	
+		gameManager = GameObject.Find("GameManager");
+		player = gameManager.GetComponent<GameManager>().player;
+		canvas = gameManager.GetComponent<GameManager>().canvas;
 	}
 
 	void Update () {

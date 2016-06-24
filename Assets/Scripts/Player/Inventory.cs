@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
+	public GameObject inventoryGameObject;
+
 	public List<Button> invSlots = new List<Button>();
 	Button equipSlot;
 	public Transform[] items;
@@ -12,7 +14,7 @@ public class Inventory : MonoBehaviour {
 	public Transform heldItemObj;
 	int slotNumber;
 	
-	public GameObject invObj;
+	
 	
 	public bool follow;
 
@@ -22,16 +24,16 @@ public class Inventory : MonoBehaviour {
 
 	public GameObject[] itemObjs;
 	public Transform[] equipables;
-	Transform currEquip;
+	public Transform currEquip;
 	public Text buff;
 	public float speedBuff;
 	public float jumpBuff;
 
 
 	void Start () {
-		invObj.SetActive(false);
-		for(int a = 0; a < invObj.transform.FindChild("Button").childCount; a++){
-			invSlots.Add(invObj.transform.FindChild("Button").GetChild(a).GetComponent<Button>());
+		inventoryGameObject.SetActive(false);
+		for(int a = 0; a < inventoryGameObject.transform.FindChild("Button").childCount; a++){
+			invSlots.Add(inventoryGameObject.transform.FindChild("Button").GetChild(a).GetComponent<Button>());
 			print(invSlots[a]);
 			if(invSlots[a].transform.childCount != 0){
 				items[a] = invSlots[a].transform.GetChild(0).transform;
@@ -42,13 +44,16 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		for(int b = 0; b < keys.Length; b++){
-			keysSprite.Add(invObj.transform.FindChild("Keys").GetChild(b));
+			keysSprite.Add(inventoryGameObject.transform.FindChild("Keys").GetChild(b));
 			keysSprite[b].gameObject.SetActive(false);
 		}
-		buff = invObj.transform.FindChild("Buffs").GetComponent<Text>();
+		buff = inventoryGameObject.transform.FindChild("Buffs").GetComponent<Text>();
+		heldItemObj = inventoryGameObject.transform.FindChild("HeldItem");
+		equipSlot = inventoryGameObject.transform.FindChild("EquipSlot").GetComponent<Button>();
 		buff.transform.gameObject.SetActive(false);
-		equipables[0].gameObject.SetActive(false);
-		equipables[1].gameObject.SetActive(false);
+		for(int c = 0; c < equipables.Length; c++){
+			equipables[c].gameObject.SetActive(false);
+		}
 	}
 	void Update () {
 		if(follow == true){
@@ -56,7 +61,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	public void Check () {
-		for(int a = 0; a < invObj.transform.GetChild(0).childCount; a++){
+		for(int a = 0; a < inventoryGameObject.transform.GetChild(0).childCount; a++){
 			if(invSlots[a].transform.childCount != 0){
 				items[a] = invSlots[a].transform.GetChild(0).transform;
 				items[a].position = invSlots[a].transform.position;
@@ -67,7 +72,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	public void Toggle () {
-		invObj.SetActive(!invObj.activeInHierarchy);
+		inventoryGameObject.SetActive(!inventoryGameObject.activeInHierarchy);
 		transform.GetComponent<Movement>().ToggleMovement();
 		transform.GetComponent<Interactions>().Toggle();
 		transform.GetComponent<Combat>().Toggle();
@@ -114,7 +119,8 @@ public class Inventory : MonoBehaviour {
 				equipedItem = null;
 			}
 			else{
-				equipSlot.onClick.AddListener(() => Equip1(heldItem));
+				Transform heldItem2 = heldItem;
+				equipSlot.onClick.AddListener(() => Equip1(heldItem2));
 				heldItem.position = equipSlot.transform.position;
 				heldItem.SetParent(equipSlot.transform);
 				equipedItem = heldItem;
@@ -146,14 +152,18 @@ public class Inventory : MonoBehaviour {
 			switch(weapon.name){
 				case "Item00(Clone)":
 					print("item00");
-					currEquip.gameObject.SetActive(false);
+					if(currEquip != null){
+						currEquip.gameObject.SetActive(false);
+					}
 					currEquip = equipables[1];
 					currEquip.gameObject.SetActive(true);
 					transform.GetComponent<Movement>().speed += speedBuff;
 					buff.text = "Movement Speed + " + speedBuff;
 				break;
 				case "Item01(Clone)": 
-					currEquip.gameObject.SetActive(false);
+					if(currEquip != null){
+						currEquip.gameObject.SetActive(false);
+					}
 					currEquip = equipables[0];
 					currEquip.gameObject.SetActive(true);
 					transform.GetComponent<Movement>().jumpPower += jumpBuff;
@@ -162,7 +172,9 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		if(follow == false){
-			currEquip.gameObject.SetActive(false);
+			if(currEquip != null){
+				currEquip.gameObject.SetActive(false);
+			}
 			buff.text = null;
 			switch(weapon.name){
 				case "Item00(Clone)":

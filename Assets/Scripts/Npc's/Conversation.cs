@@ -3,21 +3,30 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Conversation : MonoBehaviour {
-	public Canvas canvas;
-	public Transform player;
+	GameObject gameManager;
+	Canvas canvas;
+	Transform player;
 	public int oRng;
 
 	public GameObject convIns;
 	public GameObject convObj;
 	public Vector3 convPos;
 
+	bool exiting;
+	float timer;
+	public float exitTime;
+
 	public Text npcResponse;
-	public Text npcResponseL;
-	public Text npcName;
+	public string npcResponseExit;
+	Text npcName;
+	public string name;
 	public Text[] options;
 
-	public Text[] npcResponseN;
-	public Text[] optionsN;
+	public string[] npcResponseN;
+	public string[] optionsN;
+
+	public string npcResponseStart;
+	public string[] optionsStart;
 
 	public int fase;
 
@@ -33,10 +42,18 @@ public class Conversation : MonoBehaviour {
 
 	void Start () {
 		oRng = options.Length;
+		gameManager = GameObject.Find("GameManager");
+		player = gameManager.GetComponent<GameManager>().player;
+		canvas = gameManager.GetComponent<GameManager>().canvas.GetComponent<Canvas>();
 	}
 
 	void Update () {
-	
+		if(exiting == true){
+			timer += Time.deltaTime;
+			if(timer >= exitTime){
+				ExitConversation();
+			}
+		}
 	}
 	public void EngageConversation(){
 		convObj = (GameObject)Instantiate(convIns,convPos,Quaternion.identity);
@@ -53,25 +70,41 @@ public class Conversation : MonoBehaviour {
 		options[0].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => Response(0));
 		options[1].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => Response(1));
 		options[2].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => ExitConversation());
+		canvas.transform.FindChild("TopLeft").gameObject.SetActive(false);
+		convObj.transform.localScale = new Vector3(1,1,1);
+		for(int b = 0; b < oRng; b++){
+			options[b].text = optionsStart[b];
+		}
+		npcResponse.text = npcResponseStart;
+		npcName.text = name;
 	}
 	public void ExitConversation(){
-		npcResponse = npcResponseL;
-		Destroy(convObj);
-		player.transform.GetComponent<Movement>().ToggleMovement();
-		player.transform.GetComponent<Interactions>().Toggle();
-		player.transform.GetComponent<Combat>().Toggle();
+		npcResponse.text = npcResponseExit;
+		for(int a = 0; a < options.Length; a++){
+			options[a].transform.gameObject.SetActive(false);
+		}
+		if(exiting == true){
+			player.transform.GetComponent<Movement>().ToggleMovement();
+			player.transform.GetComponent<Interactions>().Toggle();
+			player.transform.GetComponent<Combat>().Toggle();
+			canvas.transform.FindChild("TopLeft").gameObject.SetActive(true);
+			exiting = false;
+			Destroy(convObj);
+		}
+		exiting = true;
+
 	}
 	public void Response (int option){
-		npcResponse = npcResponseN[option];
+		npcResponse.text = npcResponseN[option];
 		fase += 1;
 		switch(option){
 			case 0 :
 				for(int a0 = 0; a0 < oRng; a0++){
-					options[a0] = optionsN[a0];
+					options[a0].text = optionsN[a0];
 				}
 				switch(fase){
 					case 1 :
-						for(int a1 = 0; a1  < oRng; a1++){
+						for(int a01 = 0; a01  < oRng; a01++){
 
 						}
 					break;
@@ -81,6 +114,9 @@ public class Conversation : MonoBehaviour {
 				}
 			break;
 			case 1 :
+				for(int b1 = 0; b1 < oRng; b1++){
+					options[b1].text = optionsN[b1 + 3];
+				}
 				switch(fase){
 					case 1 :
 
