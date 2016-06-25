@@ -78,6 +78,8 @@ public class Conversation : MonoBehaviour {
 		}
 		npcResponse.text = npcResponseStart;
 		npcName.text = name;
+		npcResponseN = response1;
+		optionsN = answer1;
 	}
 	public void ExitConversation(){
 		npcResponse.text = npcResponseExit;
@@ -105,6 +107,7 @@ public class Conversation : MonoBehaviour {
 				for(int a0 = 0; a0 < oRng; a0++){
 					options[a0].text = optionsN[a0];
 				}
+				//Changes next options/respones.
 				switch(fase){
 					case 1 :
 						for(int a01 = 0; a01  < oRng; a01++){
@@ -117,9 +120,11 @@ public class Conversation : MonoBehaviour {
 				}
 			break;
 			case 1 :
+				//Changes the current options to the next option depending on the choice made.
 				for(int b1 = 0; b1 < oRng; b1++){
 					options[b1].text = optionsN[b1 + 3];
 				}
+				//Changes next options/respones.
 				switch(fase){
 					case 1 :
 
