@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Conversation : MonoBehaviour {
+public class ConversationShop : MonoBehaviour {
 	GameObject gameManager;
 	Canvas canvas;
 	Transform player;
@@ -96,7 +96,6 @@ public class Conversation : MonoBehaviour {
 		path1[1] = false;
 	}
 	public void ExitConversation(){
-		print("Exit");
 		npcResponse.text = npcResponseExit;
 		fase = 0;
 		if(exiting == true){
@@ -117,82 +116,88 @@ public class Conversation : MonoBehaviour {
 
 	}
 	public void Response (int option){
-		fase += 1;
 		npcResponse.text = npcResponseN[option];
-		switch(option){
-			case 0 :
-				for(int a0 = 0; a0 < oRng; a0++){
-					options[a0].text = optionsN[a0];
-				}
-				//Changes next options/respones.
-				switch(fase){
-					case 1 :
-						path1[option] = true;
-						for(int a01 = 0; a01  < oRng + oRng; a01++){
-							optionsN[a01] = answer2[a01];
-							if(a01 < oRng){
-								npcResponseN[a01] = response2[a01];
-							}
-						}
-					break;
-					case 2 :
-						if(path1[option] == true){
-							for(int a02 = 0; a02  < oRng + oRng; a02++){
-								optionsN[a02] = answer3[a02];
-								if(a02 < oRng){
-									npcResponseN[a02] = response3[a02];
+		fase += 1;
+		if(fase > 3){
+			ExitConversation();
+		}
+		else{
+			switch(option){
+				case 0 :
+					npcResponse.text = npcResponseN[option];
+					for(int a0 = 0; a0 < oRng; a0++){
+						options[a0].text = optionsN[a0];
+					}
+					//Changes next options/respones.
+					switch(fase){
+						case 1 :
+							path1[option] = true;
+							for(int a01 = 0; a01  < oRng + oRng; a01++){
+								optionsN[a01] = answer2[a01];
+								if(a01 < oRng){
+									npcResponseN[a01] = response2[a01];
 								}
 							}
-						}
-						else{
-							for(int b12 = 0; b12  < oRng + oRng; b12++){
-								optionsN[b12] = answer33[b12];
-								if(b12 < oRng){
-									npcResponseN[b12] = response33[b12];
+						break;
+						case 2 :
+							if(path1[0] == true){
+								for(int a02 = 0; a02  < oRng + oRng; a02++){
+									optionsN[a02] = answer3[a02];
+									if(a02 < oRng){
+										npcResponseN[a02] = response3[a02];
+									}
 								}
 							}
-						}
-					break;				
-				}
-			break;
-			case 1 :
-				//Changes the current options to the next option depending on the choice made.
-				for(int b1 = 0; b1 < oRng; b1++){
-					options[b1].text = optionsN[b1 + 3];
-				}
-				//Changes next options/respones.
-				switch(fase){
-					case 1 :
-						path1[option] = true;
-						for(int b01 = 0; b01  < oRng + oRng; b01++){
-							optionsN[b01] = answer22[b01];
-							if(b01 < oRng){	
-								npcResponseN[b01] = response22[b01];
-							}
-						}
-					break;
-					case 2 :
-						if(path1[0] == true){
-							for(int a12 = 0; a12  < oRng + oRng; a12++){
-								optionsN[a12] = answer3[a12 + 6];
-								if(a12 < oRng){
-									npcResponseN[a12] = response3[a12 + 3];
+							else{
+								for(int b12 = 0; b12  < oRng + oRng; b12++){
+									optionsN[b12] = answer33[b12];
+									if(b12 < oRng){
+										npcResponseN[b12] = response33[b12];
+									}
 								}
 							}
+						break;						
+					}
+				break;
+				case 1 :
+					//Changes the current options to the next option depending on the choice made.
+					for(int b1 = 0; b1 < oRng; b1++){
+						options[b1].text = optionsN[b1 + 3];
+					}
+					//Changes next options/respones.
+					switch(fase){
+						case 1 :
+							path1[option] = true;
+							for(int b01 = 0; b01  < oRng + oRng; b01++){
+								optionsN[b01] = answer22[b01];
+								if(b01 < oRng){	
+									npcResponseN[b01] = response22[b01];
+								}
+							}
+						break;
+						case 2 :
+							if(path1[0] == true){
+								for(int a12 = 0; a12  < oRng + oRng; a12++){
+									optionsN[a12] = answer3[a12 + 6];
+									if(a12 < oRng){
+										npcResponseN[a12] = response3[a12 + 3];
+									}
+								}
 
-						}
-						else{
-							for(int b02 = 0; b02  < oRng + oRng; b02++){
-								optionsN[b02] = answer33[b02 + 6];
-								if(b02 < oRng){
-									npcResponseN[b02] = response33[b02 + 3];
+							}
+							else{
+								for(int b02 = 0; b02  < oRng + oRng; b02++){
+									optionsN[b02] = answer33[b02 + 6];
+									if(b02 < oRng){
+										npcResponseN[b02] = response33[b02 + 3];
+									}
 								}
 							}
-						}
-					break;								
-				}
-			break;
+						break;						
+					}
+				break;
 
+			}
 		}
 	}
 }

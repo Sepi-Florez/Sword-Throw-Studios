@@ -16,14 +16,21 @@ public class Interactions : MonoBehaviour {
 
 	public GameObject interactTxtObj;
 	public string[] interactString;
-	// Use this for initialization
+
+	public GameObject mainMenuObj;
+
 	void Start () {
 		gameManager = GameObject.Find("GameManager");
 		player = gameManager.GetComponent<GameManager>().player;
 		canvas = gameManager.GetComponent<GameManager>().canvas;
+		player.FindChild("Main Camera").GetChild(0).gameObject.SetActive(false);
+		canvas.transform.FindChild("TopLeft").gameObject.SetActive(false);
+		player.transform.GetComponent<Combat>().Toggle();
+		player.transform.GetComponent<Movement>().ToggleMovement();
+		Toggle();
+		interactTxtObj.SetActive(false);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if(input == true){
 			InteractCheck();
@@ -40,14 +47,15 @@ public class Interactions : MonoBehaviour {
 		}
 	}
 	void InteractCheck () {
-		if(Physics.Raycast(player.position,player.forward,out inFront,interactRng)){
+		if(Physics.Raycast(player.FindChild("Main Camera").position,player.forward,out inFront,interactRng)){
+			print(inFront.transform.tag);
 			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1" || inFront.transform.tag == "Gate" ){
 				interactTxtObj.SetActive(true);
 				switch(inFront.transform.tag){
 					case "Npc":
 						interactTxtObj.GetComponent<Text>().text = interactString[0];
 						if(Input.GetButtonDown("Interact")){
-							inFront.transform.GetComponent<Conversation>().EngageConversation();
+							inFront.transform.GetComponent<ConversationShop>().EngageConversation();
 							conversation = true;
 						}
 					break;
@@ -56,6 +64,7 @@ public class Interactions : MonoBehaviour {
 						if(Input.GetButtonDown("Interact")){
 							transform.GetComponent<Inventory>().keysCount +=1;
 							transform.GetComponent<Inventory>().Keys();
+							Destroy(inFront.transform.gameObject);
 						}
 					break;
 					case "Item0" :
@@ -73,6 +82,7 @@ public class Interactions : MonoBehaviour {
 						}
 					break;
 					case "Gate" :
+						interactTxtObj.GetComponent<Text>().text = interactString[2];
 						if(transform.GetComponent<Inventory>().keysCount == 4){
 							inFront.transform.GetComponent<Animator>().SetBool("Open",true);
 						}
@@ -88,5 +98,13 @@ public class Interactions : MonoBehaviour {
 			interactTxtObj.SetActive(false);
 			interact = false;
 		}
+	}
+	public void MainMenu (){
+		Destroy(mainMenuObj);
+		player.FindChild("Main Camera").GetChild(0).gameObject.SetActive(true);
+		player.transform.GetComponent<Movement>().ToggleMovement();
+		canvas.transform.FindChild("TopLeft").gameObject.SetActive(true);
+		Toggle();
+		player.transform.GetComponent<Combat>().Toggle();
 	}
 }

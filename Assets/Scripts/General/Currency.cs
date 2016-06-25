@@ -23,8 +23,8 @@ public class Currency : MonoBehaviour {
 		gameManager = GameObject.Find("GameManager");
 		player = gameManager.GetComponent<GameManager>().player;
 		canvas = gameManager.GetComponent<GameManager>().canvas;
-		soulsObtainedUI = canvas.transform.FindChild("Currency").transform.FindChild("AddedSouls").gameObject;
-		soulCountUI = canvas.transform.FindChild("Currency").transform.FindChild("SoulCount").gameObject;
+		soulsObtainedUI = canvas.transform.FindChild("TopLeft").FindChild("Currency").transform.FindChild("AddedSouls").gameObject;
+		soulCountUI = canvas.transform.FindChild("TopLeft").FindChild("Currency").transform.FindChild("SoulCount").gameObject;
 		soulsObtainedText = soulsObtainedUI.transform.GetComponent<Text>();
 		soulCountText = soulCountUI.transform.GetComponent<Text>();	
 		soulsObtainedText.text = soulCount.ToString();
