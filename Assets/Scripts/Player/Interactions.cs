@@ -41,7 +41,7 @@ public class Interactions : MonoBehaviour {
 	}
 	void InteractCheck () {
 		if(Physics.Raycast(player.position,player.forward,out inFront,interactRng)){
-			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1"  ){
+			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1" || inFront.transform.tag == "Gate" ){
 				interactTxtObj.SetActive(true);
 				switch(inFront.transform.tag){
 					case "Npc":
@@ -70,6 +70,11 @@ public class Interactions : MonoBehaviour {
 						if(Input.GetButtonDown("Interact")){
 							Destroy(inFront.transform.gameObject);
 							transform.GetComponent<Inventory>().addItem(1);
+						}
+					break;
+					case "Gate" :
+						if(transform.GetComponent<Inventory>().keysCount == 4){
+							inFront.transform.GetComponent<Animator>().SetBool("Open",true);
 						}
 					break;
 				}

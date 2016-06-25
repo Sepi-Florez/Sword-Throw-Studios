@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: 62d96349ab216f14cbaf82ca4176b3db
+timeCreated: 1466860599
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box001
+    100004: ChamferBox001
+    100006: ChamferBox002
+    100008: ChamferBox003
+    100010: ChamferBox004
+    100012: ChamferBox005
+    100014: ChamferBox006
+    100016: ChamferBox007
+    100018: ChamferBox008
+    100020: ChamferBox009
+    100022: ChamferBox010
+    100024: ChamferBox011
+    100026: ChamferBox012
+    100028: ChamferBox013
+    100030: ChamferBox014
+    100032: ChamferBox015
+    100034: ChamferBox016
+    100036: Cylinder001
+    100038: Object001
+    400000: //RootNode
+    400002: Box001
+    400004: ChamferBox001
+    400006: ChamferBox002
+    400008: ChamferBox003
+    400010: ChamferBox004
+    400012: ChamferBox005
+    400014: ChamferBox006
+    400016: ChamferBox007
+    400018: ChamferBox008
+    400020: ChamferBox009
+    400022: ChamferBox010
+    400024: ChamferBox011
+    400026: ChamferBox012
+    400028: ChamferBox013
+    400030: ChamferBox014
+    400032: ChamferBox015
+    400034: ChamferBox016
+    400036: Cylinder001
+    400038: Object001
+    2300000: Box001
+    2300002: ChamferBox001
+    2300004: ChamferBox002
+    2300006: ChamferBox003
+    2300008: ChamferBox004
+    2300010: ChamferBox005
+    2300012: ChamferBox006
+    2300014: ChamferBox007
+    2300016: ChamferBox008
+    2300018: ChamferBox009
+    2300020: ChamferBox010
+    2300022: ChamferBox011
+    2300024: ChamferBox012
+    2300026: ChamferBox013
+    2300028: ChamferBox014
+    2300030: ChamferBox015
+    2300032: ChamferBox016
+    2300034: Cylinder001
+    2300036: Object001
+    3300000: Box001
+    3300002: ChamferBox001
+    3300004: ChamferBox002
+    3300006: ChamferBox003
+    3300008: ChamferBox004
+    3300010: ChamferBox005
+    3300012: ChamferBox006
+    3300014: ChamferBox007
+    3300016: ChamferBox008
+    3300018: ChamferBox009
+    3300020: ChamferBox010
+    3300022: ChamferBox011
+    3300024: ChamferBox012
+    3300026: ChamferBox013
+    3300028: ChamferBox014
+    3300030: ChamferBox015
+    3300032: ChamferBox016
+    3300034: Cylinder001
+    3300036: Object001
+    4300000: ChamferBox001
+    4300002: ChamferBox002
+    4300004: ChamferBox003
+    4300006: ChamferBox004
+    4300008: ChamferBox005
+    4300010: ChamferBox006
+    4300012: ChamferBox007
+    4300014: ChamferBox008
+    4300016: Cylinder001
+    4300018: Box001
+    4300020: ChamferBox010
+    4300022: ChamferBox016
+    4300024: ChamferBox015
+    4300026: ChamferBox014
+    4300028: ChamferBox013
+    4300030: ChamferBox012
+    4300032: ChamferBox011
+    4300034: ChamferBox009
+    4300036: Object001
+    7400000: Gate Opening
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Gate Opening
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ChamferBox001
+        weight: 1
+      - path: ChamferBox001/Box001
+        weight: 1
+      - path: ChamferBox001/ChamferBox002
+        weight: 1
+      - path: ChamferBox001/ChamferBox003
+        weight: 1
+      - path: ChamferBox001/ChamferBox004
+        weight: 1
+      - path: ChamferBox001/ChamferBox005
+        weight: 1
+      - path: ChamferBox001/ChamferBox006
+        weight: 1
+      - path: ChamferBox001/ChamferBox007
+        weight: 1
+      - path: ChamferBox001/ChamferBox008
+        weight: 1
+      - path: ChamferBox001/Cylinder001
+        weight: 1
+      - path: ChamferBox010
+        weight: 1
+      - path: ChamferBox010/ChamferBox009
+        weight: 1
+      - path: ChamferBox010/ChamferBox011
+        weight: 1
+      - path: ChamferBox010/ChamferBox012
+        weight: 1
+      - path: ChamferBox010/ChamferBox013
+        weight: 1
+      - path: ChamferBox010/ChamferBox014
+        weight: 1
+      - path: ChamferBox010/ChamferBox015
+        weight: 1
+      - path: ChamferBox010/ChamferBox016
+        weight: 1
+      - path: ChamferBox010/Object001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

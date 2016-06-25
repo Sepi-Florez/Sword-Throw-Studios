@@ -34,9 +34,17 @@ public class Conversation : MonoBehaviour {
 	public string[] answer2;
 	public string[] answer3;
 
+	public string[] answer22;
+	public string[] answer33;
+
 	public string[] response1;
 	public string[] response2;
 	public string[] response3;
+
+	public string[] response22;
+	public string[] response33;
+
+	public bool[] path1;
 
 
 
@@ -78,11 +86,16 @@ public class Conversation : MonoBehaviour {
 		}
 		npcResponse.text = npcResponseStart;
 		npcName.text = name;
-		npcResponseN = response1;
-		optionsN = answer1;
+		for(int c = 0; c < oRng + oRng; c++){
+			npcResponseN[c] = response1[c];
+			optionsN[c] = answer1[c];	
+		}
+		path1[0] = false;
+		path1[1] = false;
 	}
 	public void ExitConversation(){
 		npcResponse.text = npcResponseExit;
+		fase = 0;
 		if(exiting == true){
 			exiting = false;
 			player.transform.GetComponent<Movement>().ToggleMovement();
@@ -90,6 +103,7 @@ public class Conversation : MonoBehaviour {
 			player.transform.GetComponent<Combat>().Toggle();
 			canvas.transform.FindChild("TopLeft").gameObject.SetActive(true);
 			Destroy(convObj);
+		
 		}
 		else{
 			for(int a = 0; a < options.Length; a++){
@@ -110,15 +124,24 @@ public class Conversation : MonoBehaviour {
 				//Changes next options/respones.
 				switch(fase){
 					case 1 :
-						for(int a01 = 0; a01  < oRng; a01++){
-							optionsN[a01] = answer3[a01];
-							npcResponseN[a01] = response3[a01];
+						for(int a01 = 0; a01  < oRng + oRng; a01++){
+							optionsN[a01] = answer2[a01];
+							npcResponseN[a01] = response2[a01];
+							path1[option] = true;
 						}
 					break;
 					case 2 :
-						for(int a02 = 0; a02  < oRng; a02++){
-							optionsN[a02] = answer3[a02];
-							npcResponseN[a02] = response3[a02];
+						if(path1[0] == true){
+							for(int a02 = 0; a02  < oRng + oRng; a02++){
+								optionsN[a02] = answer3[a02];
+								npcResponseN[a02] = response3[a02];
+							}
+						}
+						else{
+							for(int b12 = 0; b12  < oRng + oRng; b12++){
+								optionsN[b12] = answer33[b12];
+								npcResponseN[b12] = response33[b12];
+							}
 						}
 					break;						
 				}
@@ -131,14 +154,25 @@ public class Conversation : MonoBehaviour {
 				//Changes next options/respones.
 				switch(fase){
 					case 1 :
-						for(int b01 = 0; b01  < oRng; b01++){
-							optionsN[b01 + 3] = answer3[b01 + 3];
-							npcResponseN[b01 + 3] = response3[b01 + 3];
+						for(int b01 = 0; b01  < oRng + oRng; b01++){
+							optionsN[b01] = answer22[b01];
+							npcResponseN[b01] = response22[b01];
+							path1[option] = true;
 						}
 					break;
 					case 2 :
-						for(int b02 = 0; b02  < oRng; b02++){
-							optionsN[b02 + 3] = answer3[b02 + 3];
+						if(path1[0] == true){
+							for(int a12 = 0; a12  < oRng + oRng; a12++){
+								optionsN[a12] = answer3[a12 + 6];
+								npcResponseN[a12] = response3[a12 + 6];
+							}
+
+						}
+						else{
+							for(int b02 = 0; b02  < oRng + oRng; b02++){
+								optionsN[b02] = answer33[b02 + 6];
+								npcResponseN[b02] = response33[b02 + 6];
+							}
 						}
 					break;						
 				}
