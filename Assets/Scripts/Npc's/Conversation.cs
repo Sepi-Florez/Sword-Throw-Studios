@@ -111,12 +111,15 @@ public class Conversation : MonoBehaviour {
 				switch(fase){
 					case 1 :
 						for(int a01 = 0; a01  < oRng; a01++){
-							optionsN[a01] = answer2[a01];
-							npcResponseN[a01] = response2[a01];
+							optionsN[a01] = answer3[a01];
+							npcResponseN[a01] = response3[a01];
 						}
 					break;
 					case 2 :
-				
+						for(int a02 = 0; a02  < oRng; a02++){
+							optionsN[a02] = answer3[a02];
+							npcResponseN[a02] = response3[a02];
+						}
 					break;						
 				}
 			break;
@@ -129,13 +132,14 @@ public class Conversation : MonoBehaviour {
 				switch(fase){
 					case 1 :
 						for(int b01 = 0; b01  < oRng; b01++){
-							optionsN[b01] = answer2[b01 + 3];
-							npcResponseN[b01] = response2[b01];
+							optionsN[b01 + 3] = answer3[b01 + 3];
+							npcResponseN[b01 + 3] = response3[b01 + 3];
 						}
-						
 					break;
 					case 2 :
-				
+						for(int b02 = 0; b02  < oRng; b02++){
+							optionsN[b02 + 3] = answer3[b02 + 3];
+						}
 					break;						
 				}
 			break;
