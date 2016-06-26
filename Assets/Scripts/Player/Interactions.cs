@@ -6,6 +6,7 @@ public class Interactions : MonoBehaviour {
 	GameObject gameManager;
 	Transform player;
 	GameObject canvas;
+	public Transform camera;
 
 	public bool input = true;
 	public bool interact = true;
@@ -21,6 +22,7 @@ public class Interactions : MonoBehaviour {
 
 	void Start () {
 		gameManager = GameObject.Find("GameManager");
+		camera = gameManager.GetComponent<GameManager>().player.FindChild("Main Camera");
 		player = gameManager.GetComponent<GameManager>().player;
 		canvas = gameManager.GetComponent<GameManager>().canvas;
 		player.FindChild("Main Camera").GetChild(0).gameObject.SetActive(false);
@@ -47,7 +49,7 @@ public class Interactions : MonoBehaviour {
 		}
 	}
 	void InteractCheck () {
-		if(Physics.Raycast(player.FindChild("Main Camera").position,player.forward,out inFront,interactRng)){
+		if(Physics.Raycast(camera.position,camera.forward,out inFront,interactRng)){
 			print(inFront.transform.tag);
 			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1" || inFront.transform.tag == "Gate" ){
 				interactTxtObj.SetActive(true);
