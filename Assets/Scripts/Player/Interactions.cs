@@ -56,13 +56,20 @@ public class Interactions : MonoBehaviour {
 	void InteractCheck () {
 		if(Physics.Raycast(camera.position,camera.forward,out inFront,interactRng)){
 			print(inFront.transform.tag);
-			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1" || inFront.transform.tag == "Gate" ){
+			if(inFront.transform.tag == "Npc" || inFront.transform.tag == "Npc2" || inFront.transform.tag == "Key" || inFront.transform.tag == "Item0" || inFront.transform.tag == "Item1" || inFront.transform.tag == "Gate" ){
 				interactTxtObj.SetActive(true);
 				switch(inFront.transform.tag){
 					case "Npc":
 						interactTxtObj.GetComponent<Text>().text = interactString[0];
 						if(Input.GetButtonDown("Interact")){
-							inFront.transform.GetComponent<ConversationShop>().EngageConversation();
+							inFront.transform.GetComponent<ConversationShop2>().EngageConversation();
+							conversation = true;
+						}
+					break;
+					case "Npc2":
+						interactTxtObj.GetComponent<Text>().text = interactString[0];
+						if(Input.GetButtonDown("Interact")){
+							inFront.transform.GetComponent<ConversationShop2>().EngageConversation();
 							conversation = true;
 						}
 					break;

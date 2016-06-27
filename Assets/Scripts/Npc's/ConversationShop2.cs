@@ -135,7 +135,7 @@ public class ConversationShop2 : MonoBehaviour {
 							for(int a01 = 0; a01  < oRng + oRng; a01++){
 								optionsN[a01] = answer2[a01];
 								if(a01 < oRng){
-									npcResponseN[a01] = response2[a01];
+									ExitConversation();
 								}
 							}
 						break;
@@ -144,7 +144,7 @@ public class ConversationShop2 : MonoBehaviour {
 								for(int a02 = 0; a02  < oRng + oRng; a02++){
 									optionsN[a02] = answer3[a02];
 									if(a02 < oRng){
-										npcResponseN[a02] = response3[a02];
+										ExitConversation();
 									}
 								}
 							}
@@ -152,7 +152,7 @@ public class ConversationShop2 : MonoBehaviour {
 								for(int b12 = 0; b12  < oRng + oRng; b12++){
 									optionsN[b12] = answer33[b12];
 									if(b12 < oRng){
-										npcResponseN[b12] = response33[b12];
+										ExitConversation();
 									}
 								}
 							}
@@ -171,7 +171,7 @@ public class ConversationShop2 : MonoBehaviour {
 							for(int b01 = 0; b01  < oRng + oRng; b01++){
 								optionsN[b01] = answer22[b01];
 								if(b01 < oRng){	
-									npcResponseN[b01] = response22[b01];
+									ExitConversation();
 								}
 							}
 						break;
@@ -180,7 +180,7 @@ public class ConversationShop2 : MonoBehaviour {
 								for(int a12 = 0; a12  < oRng + oRng; a12++){
 									optionsN[a12] = answer3[a12 + 6];
 									if(a12 < oRng){
-										npcResponseN[a12] = response3[a12 + 3];
+										ExitConversation();
 									}
 								}
 
@@ -189,7 +189,7 @@ public class ConversationShop2 : MonoBehaviour {
 								for(int b02 = 0; b02  < oRng + oRng; b02++){
 									optionsN[b02] = answer33[b02 + 6];
 									if(b02 < oRng){
-										npcResponseN[b02] = response33[b02 + 3];
+										ExitConversation();
 									}
 								}
 							}
