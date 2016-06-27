@@ -53,14 +53,13 @@ public class Enemy : MonoBehaviour {
 					attacked.transform.GetComponent<Combat>().Struck(damage);
 					attacked.transform.GetComponent<Rigidbody>().AddForce(knockback * knockbackPower);
 					timer = 0;
+					chase = true;
 				}
 			}
 			else{
-				chase = true;
 			}
 		}
 		else{
-			chase = true;
 		}
 	}
 	public void Struck (int damage) {
