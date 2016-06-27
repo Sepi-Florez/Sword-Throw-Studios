@@ -20,6 +20,8 @@ public class Interactions : MonoBehaviour {
 
 	public GameObject mainMenuObj;
 
+	public Vector3 tpLocation;
+
 	void Start () {
 		gameManager = GameObject.Find("GameManager");
 		camera = gameManager.GetComponent<GameManager>().player.FindChild("Main Camera");
@@ -44,8 +46,11 @@ public class Interactions : MonoBehaviour {
 	}
 	void InputCheck () {
 		if(Input.GetButtonDown("Inv")){
-				transform.GetComponent<Inventory>().Toggle();
-				interactTxtObj.SetActive(false);
+			transform.GetComponent<Inventory>().Toggle();
+			interactTxtObj.SetActive(false);
+		}
+		if(Input.GetButtonDown("Tp")){
+			player.position = tpLocation;
 		}
 	}
 	void InteractCheck () {
