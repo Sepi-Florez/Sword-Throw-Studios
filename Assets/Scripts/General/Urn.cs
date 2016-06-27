@@ -21,11 +21,11 @@ public class Urn : MonoBehaviour {
 	}
 	public void Break () {
 		Vector3 explosition = expPos.transform.position;
+		Instantiate(soul,expPos.position,Quaternion.identity);
 		for(int a = 0; a < piece.Count; a++){
 			rigidPiece[a].useGravity = true;
 			rigidPiece[a].isKinematic = false;
 			rigidPiece[a].AddExplosionForce(power, explosition, radius, 3.0F);
-			Instantiate(soul,expPos.position,Quaternion.identity);
 			Destroy(transform.GetComponent<Collider>());
 			print("boom");
 		}
