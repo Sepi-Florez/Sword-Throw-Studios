@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ConversationShop : MonoBehaviour {
+public class ConversationShop2 : MonoBehaviour {
 	GameObject gameManager;
 	Canvas canvas;
 	Transform player;
@@ -150,9 +150,9 @@ public class ConversationShop : MonoBehaviour {
 							}
 							else{
 								for(int b12 = 0; b12  < oRng + oRng; b12++){
-									optionsN[b12] = answer3[b12];
+									optionsN[b12] = answer33[b12];
 									if(b12 < oRng){
-										npcResponseN[b12] = response3[b12];
+										npcResponseN[b12] = response33[b12];
 									}
 								}
 							}
@@ -169,9 +169,9 @@ public class ConversationShop : MonoBehaviour {
 						case 1 :
 							path1[option] = true;
 							for(int b01 = 0; b01  < oRng + oRng; b01++){
-								optionsN[b01] = answer2[b01];
+								optionsN[b01] = answer22[b01];
 								if(b01 < oRng){	
-									npcResponseN[b01] = response2[b01];
+									npcResponseN[b01] = response22[b01];
 								}
 							}
 						break;
@@ -187,9 +187,9 @@ public class ConversationShop : MonoBehaviour {
 							}
 							else{
 								for(int b02 = 0; b02  < oRng + oRng; b02++){
-									optionsN[b02] = answer3[b02 + 6];
+									optionsN[b02] = answer33[b02 + 6];
 									if(b02 < oRng){
-										npcResponseN[b02] = response3[b02 + 3];
+										npcResponseN[b02] = response33[b02 + 3];
 									}
 								}
 							}
