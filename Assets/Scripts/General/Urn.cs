@@ -6,6 +6,7 @@ public class Urn : MonoBehaviour {
 	public List<Transform> piece = new List<Transform>();
 	public List<Rigidbody> rigidPiece = new List<Rigidbody>();
 	public Transform expPos;
+	public GameObject soul;
 	public float radius = 5.0F;
     public float power = 10.0F;
 
@@ -24,6 +25,7 @@ public class Urn : MonoBehaviour {
 			rigidPiece[a].useGravity = true;
 			rigidPiece[a].isKinematic = false;
 			rigidPiece[a].AddExplosionForce(power, explosition, radius, 3.0F);
+			Instantiate(soul,expPos.position,Quaternion.identity);
 			Destroy(transform.GetComponent<Collider>());
 			print("boom");
 		}

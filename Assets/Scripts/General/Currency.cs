@@ -7,6 +7,8 @@ public class Currency : MonoBehaviour {
 	GameObject canvas;
 	Transform player;
 
+	public int[] soulValue;
+
 	public int soulCount;
 	public int soulsObtained;
 
@@ -34,13 +36,15 @@ public class Currency : MonoBehaviour {
 		InterFace ();
 		Timer();
 	}
-	void OnTriggerEnter (Collider soul) {
+	void OnTriggerStay (Collider soul) {
 		switch(soul.transform.tag){
 			case "Soul01":
-				pickUp(5);	
+				pickUp(soulValue[0]);
+				Destroy(soul.transform.gameObject);	
 			break;
 			case "Soul02":
-				pickUp(10);
+				pickUp(soulValue[0]);
+				Destroy(soul.transform.gameObject);
 			break;
 		}
 	}
