@@ -23,8 +23,8 @@ public class SpawningEnemy : MonoBehaviour {
 		EnemySpawn();
 	}
 	void EnemySpawn(){
-		if(spawn == true){
-			spawn = false;
+		if(spawn == false){
+			spawn = true;
 			for(int a = 0; a < spawnLocations.Length; a++){
 				enemies.Add((GameObject)Instantiate(enemy,spawnLocations[a],Quaternion.identity));
 			}

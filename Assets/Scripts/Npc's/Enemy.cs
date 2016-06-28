@@ -57,9 +57,11 @@ public class Enemy : MonoBehaviour {
 				}
 			}
 			else{
+				chase = true;
 			}
 		}
 		else{
+			chase = true;
 		}
 	}
 	public void Struck (int damage) {
