@@ -62,7 +62,7 @@ public class Interactions : MonoBehaviour {
 					case "Npc":
 						interactTxtObj.GetComponent<Text>().text = interactString[0];
 						if(Input.GetButtonDown("Interact")){
-							inFront.transform.GetComponent<ConversationShop2>().EngageConversation();
+							inFront.transform.GetComponent<ConversationShop>().EngageConversation();
 							conversation = true;
 						}
 					break;
@@ -85,14 +85,14 @@ public class Interactions : MonoBehaviour {
 						interactTxtObj.GetComponent<Text>().text = interactString[1];
 						if(Input.GetButtonDown("Interact")){
 							Destroy(inFront.transform.gameObject);
-							transform.GetComponent<Inventory>().addItem(0);
+							transform.GetComponent<Inventory>().AddItem(0);
 						}
 					break;
 					case "Item1" :
 						interactTxtObj.GetComponent<Text>().text = interactString[1];
 						if(Input.GetButtonDown("Interact")){
 							Destroy(inFront.transform.gameObject);
-							transform.GetComponent<Inventory>().addItem(1);
+							transform.GetComponent<Inventory>().AddItem(1);
 						}
 					break;
 					case "Gate" :

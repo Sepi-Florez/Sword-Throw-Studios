@@ -14,7 +14,7 @@ public class ConversationShop2 : MonoBehaviour {
 
 	public bool exiting;
 	public float timer;
-	public float exitTime;
+	public float exitTime = 2;
 
 	public Text npcResponse;
 	public string npcResponseExit;
@@ -118,7 +118,7 @@ public class ConversationShop2 : MonoBehaviour {
 	public void Response (int option){
 		npcResponse.text = npcResponseN[option];
 		fase += 1;
-		if(fase > 3){
+		if(fase > 1){
 			ExitConversation();
 		}
 		else{
@@ -127,16 +127,19 @@ public class ConversationShop2 : MonoBehaviour {
 					npcResponse.text = npcResponseN[option];
 					for(int a0 = 0; a0 < oRng; a0++){
 						options[a0].text = optionsN[a0];
+
 					}
 					//Changes next options/respones.
 					switch(fase){
 						case 1 :
 							path1[option] = true;
 							for(int a01 = 0; a01  < oRng + oRng; a01++){
-								optionsN[a01] = answer2[a01];
-								if(a01 < oRng){
-									ExitConversation();
-								}
+								//optionsN[a01] = answer2[a01];
+								//if(a01 < oRng){
+									player.GetComponent<Inventory>().AddItem(1);
+									player.GetComponent<Currency>().soulCount = 0;
+									npcResponseN[a01] = response2[a01];
+								
 							}
 						break;
 						case 2 :
@@ -169,19 +172,20 @@ public class ConversationShop2 : MonoBehaviour {
 						case 1 :
 							path1[option] = true;
 							for(int b01 = 0; b01  < oRng + oRng; b01++){
+								player.GetComponent<Inventory>().AddItem(1);
+								player.GetComponent<Currency>().soulCount = 0;
 								optionsN[b01] = answer22[b01];
 								if(b01 < oRng){	
-									ExitConversation();
+									npcResponseN[b01] = response2[b01];
 								}
 							}
 						break;
 						case 2 :
 							if(path1[0] == true){
 								for(int a12 = 0; a12  < oRng + oRng; a12++){
-									optionsN[a12] = answer3[a12 + 6];
-									if(a12 < oRng){
+									//optionsN[a12] = answer3[a12 + 6];
+									//if(a12 < oRng){
 										ExitConversation();
-									}
 								}
 
 							}

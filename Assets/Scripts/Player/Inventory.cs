@@ -136,7 +136,7 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
-	public void addItem (int itemID) {
+	public void AddItem (int itemID) {
 		GameObject insItem = (GameObject)Instantiate(itemObjs[itemID],invSlots[0].transform.position,Quaternion.identity);
 		int b = 0;
 		for(int a = 0; b < 1; a++){
