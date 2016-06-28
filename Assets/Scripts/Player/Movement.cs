@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	public GameObject vObj;
 	public GameObject hObj;
 	public float sensitivity;
-	bool lockS;
+	public bool lockS;
 	
 	public float speed;
 	
