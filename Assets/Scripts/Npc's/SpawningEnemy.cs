@@ -9,6 +9,8 @@ public class SpawningEnemy : MonoBehaviour {
 
     public GameObject enemy;
 
+    public bool spawn;
+
 	void Start () {
 	
 	}
@@ -21,8 +23,11 @@ public class SpawningEnemy : MonoBehaviour {
 		EnemySpawn();
 	}
 	void EnemySpawn(){
-		for(int a = 0; a < spawnLocations.Length; a++){
-			enemies.Add((GameObject)Instantiate(enemy,spawnLocations[a],Quaternion.identity));
+		if(spawn == true){
+			spawn = false;
+			for(int a = 0; a < spawnLocations.Length; a++){
+				enemies.Add((GameObject)Instantiate(enemy,spawnLocations[a],Quaternion.identity));
+			}
 		}
 	}
 }
