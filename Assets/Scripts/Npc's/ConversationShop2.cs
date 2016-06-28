@@ -171,8 +171,8 @@ public class ConversationShop2 : MonoBehaviour {
 					switch(fase){
 						case 1 :
 							path1[option] = true;
+							player.GetComponent<Inventory>().AddItem(1);
 							for(int b01 = 0; b01  < oRng + oRng; b01++){
-								player.GetComponent<Inventory>().AddItem(1);
 								player.GetComponent<Currency>().soulCount = 0;
 								optionsN[b01] = answer22[b01];
 								if(b01 < oRng){	
